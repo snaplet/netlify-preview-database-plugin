@@ -29,14 +29,14 @@ export const onPreBuild = async function ({
       },
     });
 
+    console.log("Instant db created.");
+
     const { stdout } = await run.command(
       path.join(__dirname, `${pluginPath}/url.sh`),
       {
         env: { DATABASE_URL_COMMAND: databaseUrlCommand },
       }
     );
-
-    console.log("Instant db created.");
 
     console.log(`Setting ${branch} environment variable...`);
 
