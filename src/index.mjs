@@ -20,20 +20,21 @@ export const onPreBuild = async function ({
 
     console.log(`Creating instant db from ${branch} branch...`);
 
-    const { stdout } = await run.command(
-      path.join(__dirname, "/plugin/snaplet.sh"),
-      {
-        env: {
-          DATABASE_CREATE_COMMAND: databaseCreateCommand,
-          DATABASE_URL_COMMAND: databaseUrlCommand,
-          DATABASE_RESET: reset,
-        },
-      }
-    );
+    await run.command(path.join(__dirname, "./create.sh"), {
+      env: {
+        DATABASE_CREATE_COMMAND: databaseCreateCommand,
+        DATABASE_URL_COMMAND: databaseUrlCommand,
+        DATABASE_RESET: reset,
+      },
+    });
+
+    const { stdout } = await run.command(path.join(__dirname, "./url.sh"), {
+      env: { DATABASE_URL_COMMAND: databaseUrlCommand },
+    });
 
     console.log("Instant db created.");
 
-    console.log("Setting DATABASE_URL environment variable...");
+    console.log(`Setting ${branch} environment variable...`);
 
     const resp = await fetch(
       `https://api.netlify.com/api/v1/accounts/${process.env.NETLIFY_ACCOUNT_ID}/env/${databaseEnvVar}?site_id=${constants.SITE_ID}`,
@@ -52,28 +53,9 @@ export const onPreBuild = async function ({
     );
 
     if (resp.status === 200) {
-      console.log("Environment variable DATABASE_URL set.\n");
+      console.log(`Environment variable ${branch} set.`);
     } else {
       console.log({ resp });
     }
-  }
-};
-
-export const onError = async ({
-  utils: { run },
-  inputs: {
-    databaseCreateCommand = "snaplet db create --git --latest",
-    databaseDeleteCommand = "snaplet db delete --git",
-  },
-}) => {
-  if (process.env.CONTEXT === "deploy-preview") {
-    const __dirname = path.resolve();
-
-    await run.command(path.join(__dirname, "/plugin/delete.sh"), {
-      env: {
-        DATABASE_DELETE_COMMAND: databaseDeleteCommand,
-        DATABASE_CREATE_COMMAND: databaseCreateCommand,
-      },
-    });
   }
 };

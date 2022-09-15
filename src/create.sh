@@ -9,5 +9,3 @@ then
 else
     $DATABASE_CREATE_COMMAND
 fi
-
-$DATABASE_URL_COMMAND
