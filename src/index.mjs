@@ -15,12 +15,13 @@ export const onPreBuild = async function ({
 }) {
   if (process.env.CONTEXT === "deploy-preview") {
     const __dirname = path.resolve();
+    const pluginPath = "node_modules/@snaplet/netlify-plugin/src";
 
     const branch = netlifyConfig.build.environment.BRANCH;
 
     console.log(`Creating instant db from ${branch} branch...`);
 
-    await run.command(path.join(__dirname, "./create.sh"), {
+    await run.command(path.join(__dirname, `${pluginPath}/create.sh`), {
       env: {
         DATABASE_CREATE_COMMAND: databaseCreateCommand,
         DATABASE_URL_COMMAND: databaseUrlCommand,
@@ -28,9 +29,12 @@ export const onPreBuild = async function ({
       },
     });
 
-    const { stdout } = await run.command(path.join(__dirname, "./url.sh"), {
-      env: { DATABASE_URL_COMMAND: databaseUrlCommand },
-    });
+    const { stdout } = await run.command(
+      path.join(__dirname, `${pluginPath}/url.sh`),
+      {
+        env: { DATABASE_URL_COMMAND: databaseUrlCommand },
+      }
+    );
 
     console.log("Instant db created.");
 
