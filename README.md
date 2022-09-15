@@ -2,7 +2,7 @@
 
 > Create an isolated preview database for each preview deployment in Netlify
 
-This plugin injects a database connection string environmental variable into your Netlify runtime for each preview deployment. This allows you to run conflicting schema migrations and mutate the data in the database without the potential to affect other preview deployments.
+This plugin gives you a new and isolated database for your preview deployments in Netlify. A new database is created from a Snaplet snapshot for each of your Pull Requests. Giving you realistic data to preview your upcoming feature or test migrations with ease and without side-effects.
 
 ## Usage
 
