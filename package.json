@@ -1,9 +1,10 @@
 {
   "name": "@snaplet/netlify-preview-database-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "src/index.mjs",
   "license": "MIT",
-  "repository": "https://github.com/snaplet/netlify-plugin",
+  "description": "Create preview databases for Netlify preview deployments",
+  "repository": "https://github.com/snaplet/netlify-preview-database-plugin",
   "bugs": {
     "url": "https://github.com/snaplet/docs/issues"
   },
