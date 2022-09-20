@@ -21,15 +21,12 @@ This plugin gives you a new and isolated database for your preview deployments i
 # netlify.toml
 
 [[plugins]]
- package = "@snaplet/netlify-plugin"
+ package = "@snaplet/netlify-preview-database-plugin"
 
   [plugins.inputs]
     databaseEnvVar = "DATABASE_URL"
-    
     databaseCreateCommand = "snaplet db create --git --latest"
-    
     databaseUrlCommand = "snaplet db url --git"
-    
     reset = false
 ```
 **Note:** We check the deploy context associated with the build. You can configure your settings by deploy context.
