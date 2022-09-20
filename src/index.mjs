@@ -15,7 +15,8 @@ export const onPreBuild = async function ({
 }) {
   if (process.env.CONTEXT === "deploy-preview") {
     const __dirname = path.resolve();
-    const pluginPath = "node_modules/@snaplet/netlify-plugin/src";
+    const pluginPath =
+      "node_modules/@snaplet/netlify-preview-database-plugin/src";
 
     const branch = netlifyConfig.build.environment.BRANCH;
 
