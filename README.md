@@ -1,5 +1,9 @@
 # Netlify Preview Deployments with Snaplet Preview Databases
 
+<p align="center">
+  <img width="360" src="logo.png" alt="Snappy playing with branched databases plugged into netlify">
+</p>
+
 > Create an isolated preview database for each preview deployment in Netlify
 
 This plugin gives you a new and isolated database for your preview deployments in Netlify. A new database is created from a Snaplet snapshot for each of your Pull Requests. Giving you realistic data to preview your upcoming feature or test migrations with ease and without side-effects.
