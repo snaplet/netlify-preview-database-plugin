@@ -1,6 +1,7 @@
 <div align="center">
   <h1 align="center">Netlify Preview Database Plugin</h1>
-  <img width="360" src="logo.png" alt="Snappy playing with branched databases plugged into netlify">
+  <p align="center">Create an isolated preview database for each preview deployment in Netlify</p>
+  <img align="center" width="480" src="logo.png" alt="you branch?">
   <br />
   <a href="https://docs.snaplet.dev/quickstart">Quickstart</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
@@ -13,9 +14,7 @@
   <a href="https://twitter.com/_snaplet">Twitter</a>
 </div>
 
-> Create an isolated preview database for each preview deployment in Netlify
-
-This plugin gives you a new and isolated database for your preview deployments in Netlify. A new database is created from a Snaplet snapshot for each of your Pull Requests. Giving you a database (with data) to test your branch without side-effects.
+This plugin gives you a new and isolated database for your preview deployments in Netlify. When a pull-request is created, a new database is created and seeded with a Snaplet snapshot. Giving you a database (with data) to test your branch without side-effects.
 
 ## Usage
 
@@ -81,7 +80,7 @@ SNAPLET_PROJECT_ID=// Project ID found in Snaplet project settings.
 ```
 
 ## How it works
-<img width="1260" alt="Screenshot 2022-09-14 at 18 00 22" src="https://user-images.githubusercontent.com/39437696/190385467-0d704a59-7a89-4dba-a68b-eb8b2ca7c1fe.png">
+<img width="800" alt="How it works" src="https://user-images.githubusercontent.com/39437696/190385467-0d704a59-7a89-4dba-a68b-eb8b2ca7c1fe.png">
 
 > Netlify + Snaplet Preview Database + Snaplet Snapshots = Love.
 
