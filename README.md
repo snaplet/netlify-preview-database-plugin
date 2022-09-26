@@ -2,7 +2,7 @@
   <h1 align="center">Netlify Preview Database Plugin</h1>
   <p align="center">Create an isolated preview database for each preview deployment in Netlify</p>
   <img align="center" width="480" src="logo.png" alt="you branch?">
-  <br />
+  <br /><br />
   <a href="https://docs.snaplet.dev/quickstart">Quickstart</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://www.snaplet.dev/">Website</a>
@@ -13,6 +13,7 @@
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://twitter.com/_snaplet">Twitter</a>
 </div>
+<br />
 
 This plugin gives you a new and isolated database for your preview deployments in Netlify. When a pull-request is created, a new database is created and seeded with a Snaplet snapshot. Giving you a database (with data) to test your branch without side-effects.
 
