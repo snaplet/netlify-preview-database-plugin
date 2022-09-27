@@ -47,10 +47,10 @@ This plugin gives you a new and isolated database for your preview deployments i
   description: Database environment variable name
 
 - name: databaseCreateCommand
-  description: Command used to generate the instant database
+  description: Command used to generate the preview database
 
 - name: databaseUrlCommand
-  description: Command used to get the instant database url
+  description: Command used to get the preview database url
 
 - name: reset
   description: Reset the database state on each commit
@@ -81,13 +81,13 @@ SNAPLET_PROJECT_ID=// Project ID found in Snaplet project settings.
 ```
 
 ## How it works
-<img width="800" alt="How it works" src="https://user-images.githubusercontent.com/39437696/190385467-0d704a59-7a89-4dba-a68b-eb8b2ca7c1fe.png">
+<img width="800" alt="How it works" src="diagram.svg">
 
 > Netlify + Snaplet Preview Database + Snaplet Snapshots = Love.
 
 Combining preview databases with Snaplet snapshots and Netlify preview deployments gives your team a consistent experience to evaluate your deployment's Environment Variables.
 
-Each commit triggers a build in Netlify. Before the build starts, the plugin will create an instant database using your latest snapshot. Once the create command is done, we will inject the URL returned, into the environment variable, linked to your database (By default this variable is `DATABASE_URL`).
+Each commit triggers a build in Netlify. Before the build starts, the plugin will create an preview database using your latest snapshot. Once the create command is done, we will inject the URL returned, into the environment variable, linked to your database (By default this variable is `DATABASE_URL`).
 
 Once the pre-build step is executed successfully, your build will continue and a site will be deployed with the preview database.
 

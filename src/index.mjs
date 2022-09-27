@@ -20,7 +20,7 @@ export const onPreBuild = async function ({
 
     const branch = netlifyConfig.build.environment.BRANCH;
 
-    console.log(`Creating instant db from ${branch} branch...`);
+    console.log(`Creating preview db from ${branch} branch...`);
 
     await run.command(path.join(__dirname, `${pluginPath}/create.sh`), {
       env: {
@@ -30,7 +30,7 @@ export const onPreBuild = async function ({
       },
     });
 
-    console.log("Instant db created.");
+    console.log("Preview db created.");
 
     const { stdout } = await run.command(
       path.join(__dirname, `${pluginPath}/url.sh`),
