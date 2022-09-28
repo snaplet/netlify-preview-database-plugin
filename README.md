@@ -81,7 +81,7 @@ SNAPLET_PROJECT_ID=// Project ID found in Snaplet project settings.
 ```
 
 ## How it works
-<img width="800" alt="How it works" src="diagram.svg">
+<img width="800" alt="How it works" src="architecture.svg">
 
 > Netlify + Snaplet Preview Database + Snaplet Snapshots = Love.
 
