@@ -59,6 +59,9 @@ This plugin gives you a new and isolated database for your preview deployments i
 ### 3. Set environment variables
 
 - In the [Dashboard](https://app.netlify.com/). Navigate to your site then `Site settings` > `Environment Variables`. Select `Specific scopes` and pick the `Build` option.
+
+> Note: To enable deploy contexts for environment variables in the Netlify Dashboard. Navigate to `Netlify Labs` > `Scopes and Deploy Contexts for Environment Variables` and click the enable button.
+
 - [Using build environments](https://docs.netlify.com/configure-builds/file-based-configuration/#deploy-contexts), you can define them in your project.
 
 ```toml
