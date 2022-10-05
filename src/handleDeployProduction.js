@@ -17,16 +17,18 @@ export async function handleDeployProduction({
     databaseUrlEnvKey,
   },
 }) {
-  await installSnapletCLI({ run });
-
   const associatedPullRequests = await getAssociatedPullRequests({ commitRef: process.env.COMMIT_REF });
 
-  await Promise.all(associatedPullRequests.map(async (pullRequest) => {
-    const branch = pullRequest.head.ref;
+  if (associatedPullRequests.length > 0) {
+    await installSnapletCLI({ run });
 
-    await Promise.all([
-      deleteEnvironmentVariable({ branch, key: databaseUrlEnvKey, siteId: process.env.SITE_ID }),
-      deletePreviewDatabase({ run }, { branch, databaseDeleteCommand, databaseUrlCommand }),
-    ]);
-  }));
+    await Promise.all(associatedPullRequests.map(async (pullRequest) => {
+      const branch = pullRequest.head.ref;
+
+      await Promise.all([
+        deleteEnvironmentVariable({ branch, key: databaseUrlEnvKey, siteId: process.env.SITE_ID }),
+        deletePreviewDatabase({ run }, { branch, databaseDeleteCommand, databaseUrlCommand }),
+      ]);
+    }));
+  }
 }
