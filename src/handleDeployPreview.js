@@ -27,7 +27,7 @@ export async function handleDeployPreview({
 
   await setEnvironmentVariable({
     siteId: process.env.SITE_ID,
-    branch: process.env.BRANCH,
+    branch: process.env.HEAD,
     key: databaseUrlEnvKey,
     value: databaseUrl,
   });
