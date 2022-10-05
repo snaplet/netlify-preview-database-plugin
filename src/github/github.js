@@ -10,9 +10,8 @@ const [OWNER, REPOSITORY] = new URL(process.env.REPOSITORY_URL).pathname.slice(1
 export async function github(path, options) {
   const response = await fetch(`https://api.github.com/repos/${OWNER}/${REPOSITORY}/${path}`, {
     headers: {
-      // only needed for private repositories
-      ...(process.env.GITHUB_ACCESS_TOKEN && { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` }),
       Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
       "Content-Type": "application/json",
     },
     ...options
