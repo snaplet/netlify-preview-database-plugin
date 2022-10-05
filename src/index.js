@@ -23,8 +23,6 @@ export async function onPreBuild({
   } = { ...DEFAULT_INPUTS, ...inputs };
 
   if (process.env.CONTEXT === "deploy-preview") {
-    const { BRANCH: branch } = netlifyConfig.build.environment;
-
     await installSnapletCLI({ run });
 
     const databaseUrl = await createPreviewDatabase({ run }, {
@@ -35,7 +33,7 @@ export async function onPreBuild({
 
     await setEnvironmentVariable({
       siteId: constants.SITE_ID,
-      branch,
+      branch: netlifyConfig.build.environment.BRANCH,
       key: databaseEnvVar,
       value: databaseUrl,
     });
