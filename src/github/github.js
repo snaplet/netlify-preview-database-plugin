@@ -12,6 +12,7 @@ export async function github(path, options) {
     headers: {
       // only needed for private repositories
       ...(process.env.GITHUB_ACCESS_TOKEN && { Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}` }),
+      Accept: "application/vnd.github+json",
       "Content-Type": "application/json",
     },
     ...options
