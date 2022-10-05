@@ -1,22 +1,27 @@
 name: snaplet-netlify-plugin-preview-db
 
 inputs:
-  - name: databaseEnvVar
-    required: false
-    description: Database environment variable name
-    default: "DATABASE_URL"
-
   - name: databaseCreateCommand
     required: false
-    description: Command used to generate the instant database
+    description: Command used to create the preview database
     default: "snaplet db create --git --latest"
+
+  - name: databaseDeleteCommand
+    required: false
+    description: Command used to delete the preview database
+    default: "snaplet db delete --git"
 
   - name: databaseUrlCommand
     required: false
-    description: Command used to get the instant database url
+    description: Command used to get the preview database url
     default: "snaplet db url --git"
+
+  - name: databaseUrlEnvKey
+    required: false
+    description: Preview database environment variable key
+    default: "DATABASE_URL"
 
   - name: reset
     required: false
-    description: Reset the database state on each commit
+    description: Reset the preview database state on each commit
     default: false

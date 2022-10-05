@@ -1,32 +1,20 @@
-import { createPreviewDatabase } from "./createPreviewDatabase.js"
-import { installSnapletCLI } from "./installSnapletCLI.js";
-import { setEnvironmentVariable } from "./setEnvironmentVariable.js";
+import { handleDeployPreview } from "./handleDeployPreview.js";
+import { handleDeployProduction } from "./handleDeployProduction.js";
 
-export async function onPreBuild({
-  utils: { run },
-  constants,
-  netlifyConfig,
-  inputs: {
-    databaseEnvVar,
-    databaseCreateCommand,
-    databaseUrlCommand,
-    reset,
-  },
-}) {
-  if (process.env.CONTEXT === "deploy-preview") {
-    await installSnapletCLI({ run });
-
-    const databaseUrl = await createPreviewDatabase({ run }, {
-      databaseCreateCommand,
-      databaseUrlCommand,
-      reset,
-    });
-
-    await setEnvironmentVariable({
-      siteId: constants.SITE_ID,
-      branch: netlifyConfig.build.environment.BRANCH,
-      key: databaseEnvVar,
-      value: databaseUrl,
-    });
+/**
+ * @param {{
+ *   utils: { run: { command: (cmd: string, options: Record<string, any>) => { stdout: string } } },
+ *   inputs: { databaseCreateCommand: string, databaseDeleteCommand: string, databaseUrlCommand: string, databaseUrlEnvKey: string, reset: boolean }
+ * }} config
+ */
+export async function onPreBuild(config) {
+  switch (process.env.CONTEXT) {
+    case "deploy-preview":
+      await handleDeployPreview(config);
+      break;
+    case "production":
+      await handleDeployProduction(config);
+      break;
+    default:
   }
 };
