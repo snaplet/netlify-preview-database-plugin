@@ -18,6 +18,8 @@ export async function netlify(path, options) {
     throw new Error(`Netlify API error: ${response.status} ${response.statusText}`);
   }
 
-  // @ts-ignore
-  return await response.json();
+  if (response.status !== 204) {
+    // @ts-ignore
+    return await response.json();
+  }
 }
