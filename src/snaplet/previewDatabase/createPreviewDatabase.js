@@ -21,7 +21,7 @@ export async function createPreviewDatabase(ctx, options) {
 
   if (previewDatabaseIsDeployed && reset) {
     console.log("Resetting the preview database state...");
-    await ctx.run.command(databaseCreateCommand, { env: { PATH: `/opt/buildhome/.local/bin/:${process.env.PATH}` } });
+    await ctx.run.command(`${databaseCreateCommand} --force`, { env: { PATH: `/opt/buildhome/.local/bin/:${process.env.PATH}` } });
     console.log("Preview database state reset");
   }
 
