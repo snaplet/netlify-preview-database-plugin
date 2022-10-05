@@ -31,29 +31,31 @@ This plugin gives you a new and isolated database for your preview deployments i
 
 [[plugins]]
  package = "@snaplet/netlify-preview-database-plugin"
-
-  [plugins.inputs]
-    databaseEnvVar = "DATABASE_URL"
-    databaseCreateCommand = "snaplet db create --git --latest"
-    databaseUrlCommand = "snaplet db url --git"
-    reset = false
 ```
 **Note:** We check the deploy context associated with the build. You can configure your settings by deploy context.
 
-#### Inputs (All inputs are optional)
+#### Inputs
 
 ```yaml
 - name: databaseEnvVar
+  required: false
   description: Database environment variable name
+  default: "DATABASE_URL"
 
 - name: databaseCreateCommand
-  description: Command used to generate the preview database
+  required: false
+  description: Command used to generate the instant database
+  default: "snaplet db create --git --latest"
 
 - name: databaseUrlCommand
-  description: Command used to get the preview database url
+  required: false
+  description: Command used to get the instant database url
+  default: "snaplet db url --git"
 
 - name: reset
+  required: false
   description: Reset the database state on each commit
+  default: false
 ```
 
 ### 3. Set environment variables
@@ -69,7 +71,7 @@ This plugin gives you a new and isolated database for your preview deployments i
 
 [[plugins]]
 # ...
-	
+
   [context.deploy-preview.environment]
   SNAPLET_ACCESS_TOKEN="<YOUR_SNAPLET_ACCESS_TOKEN>"
 ```
@@ -78,7 +80,6 @@ This plugin gives you a new and isolated database for your preview deployments i
 
 ```
 NETLIFY_ACCESS_TOKEN=// API Access token found in Netlify user settings.
-NETLIFY_ACCOUNT_ID=// Account ID found in team settings
 SNAPLET_ACCESS_TOKEN=// CLI Access token found in Snaplet UI
 SNAPLET_PROJECT_ID=// Project ID found in Snaplet project settings.
 ```
