@@ -69,7 +69,7 @@ This plugin gives you a new and isolated database for your preview deployments i
 
 [[plugins]]
 # ...
-	
+
   [context.deploy-preview.environment]
   SNAPLET_ACCESS_TOKEN="<YOUR_SNAPLET_ACCESS_TOKEN>"
 ```
@@ -78,7 +78,6 @@ This plugin gives you a new and isolated database for your preview deployments i
 
 ```
 NETLIFY_ACCESS_TOKEN=// API Access token found in Netlify user settings.
-NETLIFY_ACCOUNT_ID=// Account ID found in team settings
 SNAPLET_ACCESS_TOKEN=// CLI Access token found in Snaplet UI
 SNAPLET_PROJECT_ID=// Project ID found in Snaplet project settings.
 ```
