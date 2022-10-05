@@ -1,5 +1,4 @@
 import { getAccountId } from "./getAccountId.js";
-import { isEnvironmentVariableDeployed } from "./isEnvironmentVariableDeployed.js";
 import { netlify } from "../netlify.js";
 import { getEnvironmentVariable } from "./getEnvironmentVariable.js";
 
