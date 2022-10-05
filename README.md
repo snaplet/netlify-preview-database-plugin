@@ -83,10 +83,21 @@ This plugin gives you a new and isolated database for your preview deployments i
 
 #### Required Environment variables
 
+```bash
+# API Access token found in Netlify user settings
+NETLIFY_ACCESS_TOKEN=
+# CLI Access token found in Snaplet UI
+SNAPLET_ACCESS_TOKEN=
+# Project ID found in Snaplet project settings
+SNAPLET_PROJECT_ID=
 ```
-NETLIFY_ACCESS_TOKEN=// API Access token found in Netlify user settings.
-SNAPLET_ACCESS_TOKEN=// CLI Access token found in Snaplet UI
-SNAPLET_PROJECT_ID=// Project ID found in Snaplet project settings.
+
+#### Optional Environment variables
+
+```bash
+# Personal Access Token found in GitHub user settings
+# It is only required for private repositories
+GITHUB_ACCESS_TOKEN=
 ```
 
 ## How it works
