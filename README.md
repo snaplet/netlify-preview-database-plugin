@@ -37,24 +37,29 @@ This plugin gives you a new and isolated database for your preview deployments i
 #### Inputs
 
 ```yaml
-- name: databaseEnvVar
-  required: false
-  description: Database environment variable name
-  default: "DATABASE_URL"
-
 - name: databaseCreateCommand
   required: false
-  description: Command used to generate the instant database
+  description: Command used to create the preview database
   default: "snaplet db create --git --latest"
+
+- name: databaseDeleteCommand
+  required: false
+  description: Command used to delete the preview database
+  default: "snaplet db delete --git"
 
 - name: databaseUrlCommand
   required: false
-  description: Command used to get the instant database url
+  description: Command used to get the preview database url
   default: "snaplet db url --git"
+
+- name: databaseUrlEnvKey
+  required: false
+  description: Preview database environment variable key
+  default: "DATABASE_URL"
 
 - name: reset
   required: false
-  description: Reset the database state on each commit
+  description: Reset the preview database state on each commit
   default: false
 ```
 
@@ -78,10 +83,15 @@ This plugin gives you a new and isolated database for your preview deployments i
 
 #### Required Environment variables
 
-```
-NETLIFY_ACCESS_TOKEN=// API Access token found in Netlify user settings.
-SNAPLET_ACCESS_TOKEN=// CLI Access token found in Snaplet UI
-SNAPLET_PROJECT_ID=// Project ID found in Snaplet project settings.
+```bash
+# Personal Access Token with "repo" scope, found in GitHub user settings
+GITHUB_ACCESS_TOKEN=
+# API Access token found in Netlify user settings
+NETLIFY_ACCESS_TOKEN=
+# CLI Access token found in Snaplet UI
+SNAPLET_ACCESS_TOKEN=
+# Project ID found in Snaplet project settings
+SNAPLET_PROJECT_ID=
 ```
 
 ## How it works

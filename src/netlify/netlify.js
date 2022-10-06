@@ -1,5 +1,10 @@
 import fetch from "node-fetch";
 
+/**
+ * @template T
+ * @param {string} path
+ * @returns {Promise<T>}
+ */
 export async function netlify(path, options) {
   const response = await fetch(`https://api.netlify.com/api/v1/${path}`, {
     headers: {
@@ -13,5 +18,8 @@ export async function netlify(path, options) {
     throw new Error(`Netlify API error: ${response.status} ${response.statusText}`);
   }
 
-  return await response.json();
+  if (response.status !== 204) {
+    // @ts-ignore
+    return await response.json();
+  }
 }
