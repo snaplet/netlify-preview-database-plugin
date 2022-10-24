@@ -3,7 +3,7 @@
   <p align="center">Create an isolated preview database for each preview deployment in Netlify without affecting production.</p>
   <img align="center" width="480" src="logo.png" alt="you branch?">
   <br /><br />
-  <a href="https://docs.snaplet.dev/quickstart">Quickstart</a>
+  <a href="https://docs.snaplet.dev/guides/netlify-preview-plugin/">Guide</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://www.snaplet.dev/">Website</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
@@ -19,10 +19,12 @@ This plugin gives you a new, isolated database with data for your preview deploy
 
 ## Usage
 
+**Need a detailed guide?** View the <a href="https://docs.snaplet.dev/guides/netlify-preview-plugin/">guide here</a>.
+
 ### 1. Install the plugin
 
-- [UI Installation](https://docs.netlify.com/integrations/build-plugins/#ui-installation) (UI installation will run on all [deploy contexts](https://docs.netlify.com/site-deploys/overview/#deploy-contexts), but this plugin will only run where the context is set to `deploy-preview`).
-- [File-based installation](https://docs.netlify.com/integrations/build-plugins/#ui-installation). Install the `@snaplet/netlify-plugin` npm package, by adding it as a dependency to your project.
+- [UI Installation via Netlify Integration Hub](https://www.netlify.com/integrations/snaplet/) (UI installation will run on all [deploy contexts](https://docs.netlify.com/site-deploys/overview/#deploy-contexts), but this plugin will only run where the context is set to `deploy-preview`).
+- [File-based installation](https://docs.netlify.com/integrations/build-plugins/#ui-installation). Install the `@snaplet/netlify-preview-database-plugin` [npm package](https://www.npmjs.com/package/@snaplet/netlify-preview-database-plugin), by adding it as a dependency to your project.
 
 ### 2. Configure settings in your project repo
 
@@ -107,4 +109,6 @@ Once the pre-build step is executed successfully, your build will continue and a
 
 ## Additional resources
 
-https://docs.netlify.com/integrations/build-plugins/#manage-plugin-versions
+[Detailed step-by-step guide](https://docs.snaplet.dev/guides/netlify-preview-plugin/)
+[Snaplet Netlify npm package](https://www.npmjs.com/package/@snaplet/netlify-preview-database-plugin) 
+[Get help via Snaplet Discord](https://app.snaplet.dev/chat)
