@@ -19,7 +19,7 @@ This plugin gives you a new, isolated database with data for your preview deploy
 
 ## Usage
 
-**Need a detailed guide?** View the <a href="https://docs.snaplet.dev/guides/netlify-preview-plugin/">guide here</a>.
+**Need a detailed installation guide?** View it <a href="https://docs.snaplet.dev/guides/netlify-preview-plugin/">here</a>.
 
 ### 1. Install the plugin
 
